@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <KL_GoogleTagManager>
+            <version>0.1.0.0</version>
+        </KL_GoogleTagManager>
+    </modules>
+    <global>
+        <blocks>
+            <googletagmanager>
+                <class>KL_GoogleTagManager_Block</class>
+            </googletagmanager>
+        </blocks>
+        <helpers>
+            <googletagmanager>
+                <class>KL_GoogleTagManager_Helper</class>
+            </googletagmanager>
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <googletagmanager>
+                    <file>googletagmanager.xml</file>
+                </googletagmanager>
+            </updates>
+        </layout>
+    </frontend>
+</config>
