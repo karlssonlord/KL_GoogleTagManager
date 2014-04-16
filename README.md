@@ -20,6 +20,7 @@ Admin > Configuration > Sales > Google API > Google Tag Manager
 
 * `transactionId` - string
 * `transactionAffiliation` - string
+* `transactionCurrency` - string
 * `transactionTotal` - numeric
 * `transactionShipping` - numeric
 * `transactionTax` - numeric

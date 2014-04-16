@@ -42,6 +42,7 @@ class KL_GoogleTagManager_Block_Gtm extends Mage_Core_Block_Template
             $data = array(
                 'transactionId'          => $order->getIncrementId(),
                 'transactionAffiliation' => Mage::app()->getStore()->getName(),
+                'transactionCurrency'    => $order->getBaseCurrencyCode(),
                 'transactionTotal'       => number_format($order->getBaseGrandTotal(), 2, '.', ''),
                 'transactionShipping'    => number_format($order->getBaseShippingAmount(), 2, '.', ''),
                 'transactionTax'         => number_format($order->getBaseTaxAmount(), 2, '.', ''),
