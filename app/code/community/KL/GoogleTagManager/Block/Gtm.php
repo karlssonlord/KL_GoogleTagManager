@@ -53,7 +53,30 @@ class KL_GoogleTagManager_Block_Gtm extends Mage_Core_Block_Template
                     'name'     => $item->getName(),
                     'sku'      => $item->getSku(),
                     'price'    => number_format($item->getBasePrice(), 2, '.', ''),
-                    'quantity' => $item->getQtyOrdered());
+                    'quantity' => number_format($item->getQtyOrdered(), 2, '.', ''));
+            }
+
+            $customerSession = Mage::getSingleton('customer/session');
+            if($customerSession->isLoggedIn()) {
+                $data['customerId']  = $customerSession->getCustomer()->getId();
+                $data['nthPurchase'] = 1;
+
+                // Get non canceled orders by customer except for this one
+                $_ordersCollection = Mage::getModel('sales/order')->getCollection()
+                    ->addFieldToFilter('customer_id', $data['customerId'])
+                    ->addFieldToFilter('increment_id', array('neq' => $data['transactionId']))
+                    ->addFieldToFilter('status', array('nin' => array('canceled', 'pay_aborted')))
+                    ->setOrder('created_at');
+                if($_ordersCollection && $_ordersCollection->count()) {
+                    $data['nthPurchase'] += $_ordersCollection->count();
+
+                    $_lastOrderDate = new \DateTime($_ordersCollection->getFirstItem()->getCreatedAt());
+                    $_nowDate       = new \DateTime(Mage::getModel('core/date')->date());
+                    $data['daysSinceLastTransaction'] = $_lastOrderDate->diff($_nowDate)->format('%a');
+                }
+            }
+            else {
+                $data['nthPurchase'] = 0;
             }
 
             $this->setDataLayer($data);

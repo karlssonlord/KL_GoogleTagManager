@@ -30,6 +30,9 @@ Admin > Configuration > Sales > Google API > Google Tag Manager
     * `category` - string
     * `price` - numeric
     * `quantity` - numeric
+* `nthPurchase` - numeric
+* `customerId` - numeric
+* `daysSinceLastTransaction` - numeric
 
 
 ## Magento Config Paths
