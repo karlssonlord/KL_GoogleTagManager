@@ -18,6 +18,7 @@ Admin > Configuration > Sales > Google API > Google Tag Manager
 
 ## Data Layer Variables
 
+* `event` - string "transaction"
 * `transactionId` - string
 * `transactionAffiliation` - string
 * `transactionCurrency` - string

@@ -40,6 +40,7 @@ class KL_GoogleTagManager_Block_Gtm extends Mage_Core_Block_Template
 
         if(isset($order) && $order->getId()) {
             $data = array(
+                'event'                  => 'transaction',
                 'transactionId'          => $order->getIncrementId(),
                 'transactionAffiliation' => Mage::app()->getStore()->getName(),
                 'transactionCurrency'    => $order->getBaseCurrencyCode(),
