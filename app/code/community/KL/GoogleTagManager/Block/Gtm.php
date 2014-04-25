@@ -34,7 +34,14 @@ class KL_GoogleTagManager_Block_Gtm extends Mage_Core_Block_Template
      */
     private function _getDataLayer()
     {
-        if($orderId = Mage::getSingleton('checkout/session')->getLastOrderId()) {
+        $_checkoutSession = Mage::getSingleton('checkout/session');
+
+        $orderId = $_checkoutSession->getLastOrderId();
+
+        if($_checkoutSession->getLastTransaction() === $orderId) return;
+        $_checkoutSession->setLastTransaction($orderId);
+
+        if($orderId) {
             $order = Mage::getModel('sales/order')->load($orderId);
         }
 
