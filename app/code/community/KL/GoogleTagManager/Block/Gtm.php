@@ -18,7 +18,7 @@ class KL_GoogleTagManager_Block_Gtm extends Mage_Core_Block_Template
      * @since     0.1.0.0
      * @return    bool
      */
-    private function _isActive()
+    protected function _isActive()
     {
         return Mage::getStoreConfig('google/tagmanager/active') &&
             Mage::getStoreConfig('google/tagmanager/container');
@@ -32,7 +32,7 @@ class KL_GoogleTagManager_Block_Gtm extends Mage_Core_Block_Template
      *
      * @see https://support.google.com/tagmanager/answer/3002596
      */
-    private function _getDataLayer()
+    protected function _getDataLayer()
     {
         $_checkoutSession = Mage::getSingleton('checkout/session');
 
@@ -45,7 +45,8 @@ class KL_GoogleTagManager_Block_Gtm extends Mage_Core_Block_Template
             $order = Mage::getModel('sales/order')->load($orderId);
         }
 
-        if(isset($order) && $order->getId()) {
+
+        if(isset($order) && $order->getId() && $order->getState() != Mage_Sales_Model_Order::STATE_CANCELED) {
             $data = array(
                 'event'                  => 'transaction',
                 'transactionId'          => $order->getIncrementId(),
