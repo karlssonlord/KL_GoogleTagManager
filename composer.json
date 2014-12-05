@@ -1,0 +1,32 @@
+{
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*",
+        "magento/core": "1.9.0.1",
+        "magetest/magento-phpspec-extension": "~2.1"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packages.firegento.com"
+        }
+    ],
+    "extra":{
+        "magento-root-dir": "src/",
+        "magento-deploystrategy": "symlink",
+        "auto-append-gitignore": true
+    },
+    "autoload": {
+        "psr-0": {
+            "": [
+                "app/",
+                "src/app",
+                "src/app/code/local",
+                "src/app/code/community",
+                "src/app/code/core",
+                "src/lib"
+
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
