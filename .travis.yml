@@ -1,0 +1,19 @@
+language: php
+
+php:
+    - 5.3
+    - 5.4
+    - 5.5
+
+branches:
+    only:
+        - master
+before_script:
+    - composer self-update
+    - composer install --prefer-source --no-interaction
+    - sleep 5
+script:
+    - bin/phpspec run -f dot
+notifications:
+    email: "travis-ci@sylius.org"
+    irc:   "irc.freenode.org#sylius-dev"
