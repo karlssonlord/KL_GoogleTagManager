@@ -13,7 +13,4 @@ before_script:
     - composer install --prefer-source --no-interaction
     - sleep 5
 script:
-    - bin/phpspec run -f dot
-notifications:
-    email: "travis-ci@sylius.org"
-    irc:   "irc.freenode.org#sylius-dev"
+    - vendor/bin/phpspec run -f dot
