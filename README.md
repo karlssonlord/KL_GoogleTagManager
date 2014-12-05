@@ -45,3 +45,7 @@ Admin > Configuration > Sales > Google API > Google Tag Manager
 ## Other Google Tag Manager Modules
 
 * [Magento_GoogleTagManager](https://github.com/CVM/Magento_GoogleTagManager)
+
+## Run tests
+    composer install
+    vendor/bin/phpspec run
