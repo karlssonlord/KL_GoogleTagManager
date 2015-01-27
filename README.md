@@ -2,6 +2,7 @@
 
 Minimalistic [Google Tag Manager](https://www.google.com/tagmanager/) integration for Magento with Data Layer support.
 
+[![Build Status](https://travis-ci.org/karlssonlord/KL_GoogleTagManager.svg?branch=master)](https://travis-ci.org/karlssonlord/KL_GoogleTagManager)
 
 ## Installation
 
