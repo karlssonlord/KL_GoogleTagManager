@@ -65,6 +65,8 @@ class KL_GoogleTagManager_Block_Gtm extends Mage_Core_Block_Template
                     'quantity' => number_format($item->getQtyOrdered(), 2, '.', ''));
             }
 
+            $data['couponCode'] = $order->getCouponCode() ? $order->getCouponCode() : '';
+
             $customerSession = Mage::getSingleton('customer/session');
             if($customerSession->isLoggedIn()) {
                 $data['customerId']  = $customerSession->getCustomer()->getId();
