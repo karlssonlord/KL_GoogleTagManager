@@ -38,7 +38,14 @@ class KL_GoogleTagManager_Block_Gtm extends Mage_Core_Block_Template
 
         $orderId = $_checkoutSession->getLastOrderId();
 
-        if($_checkoutSession->getLastTransaction() === $orderId) return;
+        if (!Mage::getStoreConfig('google/tagmanager/transaction')) {
+            return;
+        }
+
+        if ($_checkoutSession->getLastTransaction() === $orderId) {
+            return;
+        }
+
         $_checkoutSession->setLastTransaction($orderId);
 
         if($orderId) {

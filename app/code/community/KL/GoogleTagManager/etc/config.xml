@@ -26,4 +26,11 @@
             </updates>
         </layout>
     </frontend>
+    <default>
+        <google>
+            <tagmanager>
+                <transaction>1</transaction>
+            </tagmanager>
+        </google>
+    </default>
 </config>
